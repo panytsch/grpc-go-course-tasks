@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package sum;
+
+option go_package = "go_course_pb";
+
+message SumRequest {
+    int32 firstNumber = 1;
+    int32 secondNumber = 2;
+}
+
+message SumResponse {
+    int64 sum = 1;
+}
+message PrimeNumberRequest {
+    int32 number = 1;
+}
+
+message PrimeNumberResponse {
+    int32 divisor = 1;
+}
+
+service GoCourseService {
+    rpc Sum (SumRequest) returns (SumResponse) {};
+    rpc PrimeNumber (PrimeNumberRequest) returns (stream PrimeNumberResponse) {};
+}
