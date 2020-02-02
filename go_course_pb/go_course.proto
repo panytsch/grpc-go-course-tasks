@@ -20,7 +20,19 @@ message PrimeNumberResponse {
     int32 divisor = 1;
 }
 
+message AverageRequest {
+    int64 number = 1;
+}
+
+message AverageResponse {
+    double average = 1;
+}
+
 service GoCourseService {
+    //Unary
     rpc Sum (SumRequest) returns (SumResponse) {};
+    //Server streaming
     rpc PrimeNumber (PrimeNumberRequest) returns (stream PrimeNumberResponse) {};
+    //Client streaming
+    rpc LongAverage(stream AverageRequest) returns (AverageResponse) {};
 }

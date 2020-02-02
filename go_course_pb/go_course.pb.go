@@ -188,33 +188,116 @@ func (m *PrimeNumberResponse) GetDivisor() int32 {
 	return 0
 }
 
+type AverageRequest struct {
+	Number               int64    `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AverageRequest) Reset()         { *m = AverageRequest{} }
+func (m *AverageRequest) String() string { return proto.CompactTextString(m) }
+func (*AverageRequest) ProtoMessage()    {}
+func (*AverageRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eb9190394901c994, []int{4}
+}
+
+func (m *AverageRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AverageRequest.Unmarshal(m, b)
+}
+func (m *AverageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AverageRequest.Marshal(b, m, deterministic)
+}
+func (m *AverageRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AverageRequest.Merge(m, src)
+}
+func (m *AverageRequest) XXX_Size() int {
+	return xxx_messageInfo_AverageRequest.Size(m)
+}
+func (m *AverageRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AverageRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AverageRequest proto.InternalMessageInfo
+
+func (m *AverageRequest) GetNumber() int64 {
+	if m != nil {
+		return m.Number
+	}
+	return 0
+}
+
+type AverageResponse struct {
+	Average              float64  `protobuf:"fixed64,1,opt,name=average,proto3" json:"average,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AverageResponse) Reset()         { *m = AverageResponse{} }
+func (m *AverageResponse) String() string { return proto.CompactTextString(m) }
+func (*AverageResponse) ProtoMessage()    {}
+func (*AverageResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eb9190394901c994, []int{5}
+}
+
+func (m *AverageResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AverageResponse.Unmarshal(m, b)
+}
+func (m *AverageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AverageResponse.Marshal(b, m, deterministic)
+}
+func (m *AverageResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AverageResponse.Merge(m, src)
+}
+func (m *AverageResponse) XXX_Size() int {
+	return xxx_messageInfo_AverageResponse.Size(m)
+}
+func (m *AverageResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AverageResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AverageResponse proto.InternalMessageInfo
+
+func (m *AverageResponse) GetAverage() float64 {
+	if m != nil {
+		return m.Average
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*SumRequest)(nil), "sum.SumRequest")
 	proto.RegisterType((*SumResponse)(nil), "sum.SumResponse")
 	proto.RegisterType((*PrimeNumberRequest)(nil), "sum.PrimeNumberRequest")
 	proto.RegisterType((*PrimeNumberResponse)(nil), "sum.PrimeNumberResponse")
+	proto.RegisterType((*AverageRequest)(nil), "sum.AverageRequest")
+	proto.RegisterType((*AverageResponse)(nil), "sum.AverageResponse")
 }
 
 func init() { proto.RegisterFile("go_course_pb/go_course.proto", fileDescriptor_eb9190394901c994) }
 
 var fileDescriptor_eb9190394901c994 = []byte{
-	// 241 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x90, 0xc1, 0x4a, 0xc3, 0x40,
-	0x10, 0x86, 0x8d, 0xc1, 0x0a, 0x93, 0x62, 0xcb, 0x08, 0x1a, 0x8a, 0x60, 0xd9, 0x93, 0x88, 0xa4,
-	0xa2, 0x6f, 0xa0, 0x82, 0x37, 0x91, 0xe4, 0xe6, 0xa5, 0x90, 0x74, 0x94, 0x3d, 0x6c, 0x26, 0xee,
-	0x64, 0xfb, 0x02, 0xbe, 0xb8, 0xb8, 0xcd, 0xda, 0x2d, 0x39, 0xce, 0xbf, 0x1f, 0xff, 0xb7, 0x33,
-	0x70, 0xf5, 0xc5, 0xeb, 0x86, 0x9d, 0x15, 0x5a, 0x77, 0xf5, 0xea, 0x7f, 0x28, 0x3a, 0xcb, 0x3d,
-	0x63, 0x2a, 0xce, 0xa8, 0x12, 0xa0, 0x72, 0xa6, 0xa4, 0x6f, 0x47, 0xd2, 0xe3, 0x12, 0xb2, 0x4f,
-	0x6d, 0xa5, 0x7f, 0x73, 0xa6, 0x26, 0x9b, 0x27, 0xcb, 0xe4, 0xe6, 0xa4, 0x8c, 0x23, 0x54, 0x30,
-	0x15, 0x6a, 0xb8, 0xdd, 0x0c, 0xc8, 0xb1, 0x47, 0x0e, 0x32, 0x75, 0x0d, 0x99, 0xef, 0x94, 0x8e,
-	0x5b, 0x21, 0x9c, 0xc3, 0x9f, 0xc9, 0x97, 0xa5, 0xa5, 0x97, 0xde, 0x01, 0xbe, 0x5b, 0x6d, 0x68,
-	0xc7, 0x07, 0xf9, 0x05, 0x4c, 0xda, 0xd8, 0x3b, 0x4c, 0x6a, 0x05, 0xe7, 0x07, 0xf4, 0x50, 0x9b,
-	0xc3, 0xe9, 0x46, 0x6f, 0xb5, 0x70, 0xe0, 0xc3, 0xf8, 0xf0, 0x93, 0xc0, 0xec, 0x95, 0x9f, 0xfd,
-	0xae, 0x15, 0xd9, 0xad, 0x6e, 0x08, 0x6f, 0x21, 0xad, 0x9c, 0xc1, 0x59, 0x21, 0xce, 0x14, 0xfb,
-	0x8d, 0x17, 0xf3, 0x7d, 0xb0, 0xeb, 0x55, 0x47, 0xf8, 0x02, 0x59, 0x24, 0xc4, 0x4b, 0x8f, 0x8c,
-	0x3f, 0xbc, 0xc8, 0xc7, 0x0f, 0xa1, 0xe3, 0x3e, 0x79, 0x3a, 0xfb, 0x98, 0xc6, 0xe7, 0xaf, 0x27,
-	0xfe, 0xea, 0x8f, 0xbf, 0x01, 0x00, 0x00, 0xff, 0xff, 0x46, 0x1f, 0x79, 0xe9, 0x95, 0x01, 0x00,
-	0x00,
+	// 292 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x92, 0xcd, 0x4a, 0xf4, 0x30,
+	0x14, 0x86, 0xbf, 0x7c, 0xc5, 0x11, 0x4e, 0x87, 0xe9, 0x90, 0x11, 0x2d, 0x45, 0x70, 0xc8, 0xaa,
+	0xa8, 0x74, 0x44, 0xb7, 0x6e, 0xfc, 0x01, 0x37, 0x22, 0xd2, 0xee, 0xdc, 0x0c, 0xd3, 0xce, 0xb1,
+	0x74, 0x91, 0xa6, 0x26, 0x4d, 0xef, 0xcf, 0x3b, 0x13, 0xd3, 0xa6, 0x3f, 0x8c, 0xcb, 0xf3, 0xf6,
+	0xe9, 0xf3, 0x26, 0x87, 0xc0, 0x79, 0x2e, 0xb6, 0x99, 0xd0, 0x52, 0xe1, 0xb6, 0x4a, 0x37, 0xfd,
+	0x10, 0x55, 0x52, 0xd4, 0x82, 0x3a, 0x4a, 0x73, 0x16, 0x03, 0x24, 0x9a, 0xc7, 0xf8, 0xa5, 0x51,
+	0xd5, 0x74, 0x0d, 0xee, 0x67, 0x21, 0x55, 0xfd, 0xa6, 0x79, 0x8a, 0xd2, 0x27, 0x6b, 0x12, 0x1e,
+	0xc5, 0xe3, 0x88, 0x32, 0x98, 0x2b, 0xcc, 0x44, 0xb9, 0xef, 0x90, 0xff, 0x06, 0x99, 0x64, 0xec,
+	0x02, 0x5c, 0xe3, 0x54, 0x95, 0x28, 0x15, 0xd2, 0x25, 0xfc, 0x36, 0x19, 0x99, 0x13, 0x9b, 0xd2,
+	0x6b, 0xa0, 0xef, 0xb2, 0xe0, 0xd8, 0xf2, 0xb6, 0xfc, 0x14, 0x66, 0xe5, 0xb8, 0xb7, 0x9b, 0xd8,
+	0x06, 0x56, 0x13, 0xba, 0xd3, 0xfa, 0x70, 0xbc, 0x2f, 0x9a, 0x42, 0x09, 0xcb, 0xdb, 0x91, 0x85,
+	0xb0, 0x78, 0x68, 0x50, 0xee, 0x72, 0xfc, 0x5b, 0xed, 0xf4, 0xea, 0x2b, 0xf0, 0x7a, 0x72, 0xd0,
+	0xee, 0xda, 0xc8, 0xb0, 0x24, 0xb6, 0xe3, 0xed, 0x37, 0x01, 0xef, 0x45, 0x3c, 0x99, 0x15, 0x26,
+	0x28, 0x9b, 0x22, 0x43, 0x7a, 0x09, 0x4e, 0xa2, 0x39, 0xf5, 0x22, 0xa5, 0x79, 0x34, 0x2c, 0x32,
+	0x58, 0x0e, 0x41, 0xeb, 0x65, 0xff, 0xe8, 0x33, 0xb8, 0xa3, 0x7b, 0xd0, 0x33, 0x83, 0x1c, 0xee,
+	0x21, 0xf0, 0x0f, 0x3f, 0x58, 0xc7, 0x0d, 0xa1, 0xf7, 0xe0, 0xbe, 0x8a, 0x32, 0xef, 0x8e, 0x4d,
+	0x57, 0x06, 0x9e, 0x5e, 0x37, 0x38, 0x99, 0x86, 0xf6, 0xef, 0x90, 0x3c, 0x2e, 0x3e, 0xe6, 0xe3,
+	0x37, 0x91, 0xce, 0xcc, 0x53, 0xb8, 0xfb, 0x09, 0x00, 0x00, 0xff, 0xff, 0x65, 0xec, 0x36, 0x95,
+	0x2a, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -229,8 +312,12 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GoCourseServiceClient interface {
+	//Unary
 	Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error)
+	//Server streaming
 	PrimeNumber(ctx context.Context, in *PrimeNumberRequest, opts ...grpc.CallOption) (GoCourseService_PrimeNumberClient, error)
+	//Client streaming
+	LongAverage(ctx context.Context, opts ...grpc.CallOption) (GoCourseService_LongAverageClient, error)
 }
 
 type goCourseServiceClient struct {
@@ -251,7 +338,7 @@ func (c *goCourseServiceClient) Sum(ctx context.Context, in *SumRequest, opts ..
 }
 
 func (c *goCourseServiceClient) PrimeNumber(ctx context.Context, in *PrimeNumberRequest, opts ...grpc.CallOption) (GoCourseService_PrimeNumberClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_GoCourseService_serviceDesc.Streams[0], "/sum.GoCourseService/PrimeNumber", opts...)
+	stream, err := c.cc.NewStream(ctx, &_GoCourseService_serviceDesc.Streams[0], "/sum.GoCourseService/AverageNumber", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -282,10 +369,48 @@ func (x *goCourseServicePrimeNumberClient) Recv() (*PrimeNumberResponse, error) 
 	return m, nil
 }
 
+func (c *goCourseServiceClient) LongAverage(ctx context.Context, opts ...grpc.CallOption) (GoCourseService_LongAverageClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_GoCourseService_serviceDesc.Streams[1], "/sum.GoCourseService/LongAverage", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &goCourseServiceLongAverageClient{stream}
+	return x, nil
+}
+
+type GoCourseService_LongAverageClient interface {
+	Send(*AverageRequest) error
+	CloseAndRecv() (*AverageResponse, error)
+	grpc.ClientStream
+}
+
+type goCourseServiceLongAverageClient struct {
+	grpc.ClientStream
+}
+
+func (x *goCourseServiceLongAverageClient) Send(m *AverageRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *goCourseServiceLongAverageClient) CloseAndRecv() (*AverageResponse, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(AverageResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // GoCourseServiceServer is the server API for GoCourseService service.
 type GoCourseServiceServer interface {
+	//Unary
 	Sum(context.Context, *SumRequest) (*SumResponse, error)
+	//Server streaming
 	PrimeNumber(*PrimeNumberRequest, GoCourseService_PrimeNumberServer) error
+	//Client streaming
+	LongAverage(GoCourseService_LongAverageServer) error
 }
 
 // UnimplementedGoCourseServiceServer can be embedded to have forward compatible implementations.
@@ -296,7 +421,10 @@ func (*UnimplementedGoCourseServiceServer) Sum(ctx context.Context, req *SumRequ
 	return nil, status.Errorf(codes.Unimplemented, "method Sum not implemented")
 }
 func (*UnimplementedGoCourseServiceServer) PrimeNumber(req *PrimeNumberRequest, srv GoCourseService_PrimeNumberServer) error {
-	return status.Errorf(codes.Unimplemented, "method PrimeNumber not implemented")
+	return status.Errorf(codes.Unimplemented, "method AverageNumber not implemented")
+}
+func (*UnimplementedGoCourseServiceServer) LongAverage(srv GoCourseService_LongAverageServer) error {
+	return status.Errorf(codes.Unimplemented, "method LongAverage not implemented")
 }
 
 func RegisterGoCourseServiceServer(s *grpc.Server, srv GoCourseServiceServer) {
@@ -342,6 +470,32 @@ func (x *goCourseServicePrimeNumberServer) Send(m *PrimeNumberResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _GoCourseService_LongAverage_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(GoCourseServiceServer).LongAverage(&goCourseServiceLongAverageServer{stream})
+}
+
+type GoCourseService_LongAverageServer interface {
+	SendAndClose(*AverageResponse) error
+	Recv() (*AverageRequest, error)
+	grpc.ServerStream
+}
+
+type goCourseServiceLongAverageServer struct {
+	grpc.ServerStream
+}
+
+func (x *goCourseServiceLongAverageServer) SendAndClose(m *AverageResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *goCourseServiceLongAverageServer) Recv() (*AverageRequest, error) {
+	m := new(AverageRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 var _GoCourseService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "sum.GoCourseService",
 	HandlerType: (*GoCourseServiceServer)(nil),
@@ -353,9 +507,14 @@ var _GoCourseService_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "PrimeNumber",
+			StreamName:    "AverageNumber",
 			Handler:       _GoCourseService_PrimeNumber_Handler,
 			ServerStreams: true,
+		},
+		{
+			StreamName:    "LongAverage",
+			Handler:       _GoCourseService_LongAverage_Handler,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "go_course_pb/go_course.proto",

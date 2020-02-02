@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/panytsch/grpc-go-course-tasks/go_course_pb"
 	"google.golang.org/grpc"
+	"io"
 	"log"
 	"net"
 )
@@ -25,7 +26,27 @@ func main() {
 
 type server struct{}
 
-func (s *server) Sum(_ context.Context, request *go_course_pb.SumRequest) (*go_course_pb.SumResponse, error) {
+func (*server) LongAverage(stream go_course_pb.GoCourseService_LongAverageServer) error {
+	log.Printf("LongAverage method has invoked\n")
+	sum := int64(0)
+	count := int64(0)
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			result := float64(sum) / float64(count)
+			return stream.SendAndClose(&go_course_pb.AverageResponse{
+				Average: result,
+			})
+		} else if err != nil {
+			log.Fatalf("Error while receiving requests: %v", err)
+		}
+		log.Printf("Received request: %v\n", req)
+		sum += req.GetNumber()
+		count++
+	}
+}
+
+func (*server) Sum(_ context.Context, request *go_course_pb.SumRequest) (*go_course_pb.SumResponse, error) {
 	log.Printf("Got new sum request: %v\n", request)
 	sum := int64(request.GetFirstNumber() + request.GetSecondNumber())
 	return &go_course_pb.SumResponse{
@@ -33,7 +54,7 @@ func (s *server) Sum(_ context.Context, request *go_course_pb.SumRequest) (*go_c
 	}, nil
 }
 
-func (s *server) PrimeNumber(req *go_course_pb.PrimeNumberRequest, srv go_course_pb.GoCourseService_PrimeNumberServer) error {
+func (*server) PrimeNumber(req *go_course_pb.PrimeNumberRequest, srv go_course_pb.GoCourseService_PrimeNumberServer) error {
 	log.Printf("Received new request: %v", req)
 	divisor := int32(2)
 	number := req.GetNumber()
