@@ -26,6 +26,30 @@ func main() {
 
 type server struct{}
 
+func (*server) FindMaximum(stream go_course_pb.GoCourseService_FindMaximumServer) error {
+	log.Printf("Find maximum has invoked\n")
+
+	var currentMaximum int64
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		} else if err != nil {
+			log.Fatalf("Error while receiving: %v", err)
+		}
+		if currentMaximum >= req.GetNumber() {
+			continue
+		}
+		currentMaximum = req.GetNumber()
+		err = stream.Send(&go_course_pb.MaximumResponse{
+			CurrentMaximum: currentMaximum,
+		})
+		if err != nil {
+			log.Fatalf("Error while sending response: %v", err)
+		}
+	}
+}
+
 func (*server) LongAverage(stream go_course_pb.GoCourseService_LongAverageServer) error {
 	log.Printf("LongAverage method has invoked\n")
 	sum := int64(0)

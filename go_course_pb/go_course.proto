@@ -8,14 +8,13 @@ message SumRequest {
     int32 firstNumber = 1;
     int32 secondNumber = 2;
 }
-
 message SumResponse {
     int64 sum = 1;
 }
+
 message PrimeNumberRequest {
     int32 number = 1;
 }
-
 message PrimeNumberResponse {
     int32 divisor = 1;
 }
@@ -23,9 +22,15 @@ message PrimeNumberResponse {
 message AverageRequest {
     int64 number = 1;
 }
-
 message AverageResponse {
     double average = 1;
+}
+
+message MaximumRequest {
+    int64 number = 1;
+}
+message MaximumResponse {
+    int64 currentMaximum = 1;
 }
 
 service GoCourseService {
@@ -35,4 +40,6 @@ service GoCourseService {
     rpc PrimeNumber (PrimeNumberRequest) returns (stream PrimeNumberResponse) {};
     //Client streaming
     rpc LongAverage(stream AverageRequest) returns (AverageResponse) {};
+    //Bidi streaming
+    rpc FindMaximum(stream MaximumRequest) returns (stream MaximumResponse) {};
 }
